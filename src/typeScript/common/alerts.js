@@ -1,33 +1,32 @@
 export const alerts = {
-
   data() {
-    const d_warning = "";
-    const d_danger = "";
+    const dWarning = "";
+    const dDanger = "";
     return {
-      d_warning,
-      d_danger
+      dWarning,
+      dDanger
     };
   }, //data
 
   computed: {
     alertObject: function() {
-      return { error: this.d_danger, warning: this.d_warning };
+      return { error: this.dDanger, warning: this.dWarning };
     }
   }, //computed
 
-	methods: {
-		//use by form elements sent via slot 
-		alerts: function (type, message) {
-			// console.log(message);
-			if (type == "warning") {
-				this.d_warning = message;
-			} else if (type == "error") {
-				this.d_danger = message;
-			} else {
-				alert("error in input alert module");
+  methods: {
+    //use by form elements sent via slot
+    alerts: function(type, message) {
+      // console.log(message);
+      if (type == "warning") {
+        this.dWarning = message;
+      } else if (type == "error") {
+        this.dDanger = message;
+      } else {
+        alert("error in input alert module");
       }
-		} //alerts
-	}, //methifs
+    } //alerts
+  } //methifs
 
   // watch: {
   //   //send warning messages back to parent component

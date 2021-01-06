@@ -1,56 +1,52 @@
 <template>
-  <div :class= '{ vueInfo: true, inline: inline }' >
-    <label v-if= 'label' :class= '{maskField: mask}' >
-      {{label}}
+  <div :class="{ vueInfo: true, inline: inline }">
+    <label v-if="label" :class="{ maskField: mask }">
+      {{ label }}
     </label>
-    <div :class= '{ maskField: mask }' v-text="value" />
+    <div :class="{ maskField: mask }" v-text="value" />
   </div>
 </template>
 
 <script>
+export default {
+  name: "vueInfo",
 
-  export default {
-    name: 'vueInfo',
+  props: {
+    //sets heading/Label for the input field
+    label: {
+      required: true,
+      type: String,
+      Default: null
+    },
 
-    props: {
-			//sets heading/Label for the input field
-      label: {
-        required: true,
-        type: String,
-        Default: null
-      },
+    //users have to pass preset values for the field
+    value: {
+      required: true,
+      type: [String, Number, Boolean, Array],
+      default: "default: No Value passed"
+    },
 
-      //users have to pass preset values for the field
-      value: {
-        required: true,
-        type: [String, Number, Boolean, Array],
-        default: 'default: No Value passed'
-      },
+    //reserves space and created a mask if set to true
+    mask: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
 
-      //reserves space and created a mask if set to true
-      mask: {
-        required: false,
-        type: Boolean,
-        default: false
-      },
-
-      //checks if label options should appear on the same line or not
-      inline: {
-        required: false,
-        type: Boolean,
-        default: false
-      }
-    }, //props
-  } //default
+    //checks if label options should appear on the same line or not
+    inline: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  } //props
+}; //default
 </script>
 
-<style lang= "less" scoped>
-
-  .vueInfo {
-
-    > div {
-      margin-left: 18px;
-    }
+<style lang="less" scoped>
+.vueInfo {
+  > div {
+    margin-left: 18px;
   }
+}
 </style>
-

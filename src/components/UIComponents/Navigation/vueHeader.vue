@@ -25,7 +25,7 @@
           :key="index + '-' + navigation.name"
         >
           <router-link :to="{ name: navigation.component }">
-            <template v-if= "navigation.id === 0">
+            <template v-if="navigation.id === 0">
               <vue-img :src="logoLink" alt="Logo" />
               <h3>
                 Hrishikesh Karale

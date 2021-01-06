@@ -24,7 +24,7 @@ export const toggle = {
   methods: {
     toggle: function(id) {
       const show = this.show;
-      if (show.indexOf(id)==-1) {
+      if (show.indexOf(id) == -1) {
         this.show = [...show, id];
       } else {
         //filter returns an array where id is not present
@@ -68,8 +68,8 @@ export const toggle = {
       return "fas fa-question-circle";
     }, //activeTheme
 
-    isOpen: function (id) {
-      return this.show.indexOf(id)!=-1;
+    isOpen: function(id) {
+      return this.show.indexOf(id) != -1;
     } //isOpen
   },
 

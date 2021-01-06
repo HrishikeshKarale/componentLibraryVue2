@@ -78,7 +78,7 @@ export default {
 			else return;
 		}, //navBreakdown
     isComponent: function(comp) {
-      var result = this.unique.find(uni => comp == uni.comp);
+      const result = this.unique.find(uni => comp == uni.comp);
       return result? result : false;
     }
   }

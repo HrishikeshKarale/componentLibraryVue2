@@ -1,13 +1,15 @@
-// https://tympanus.net/Development/CreativeButtons/ //
-// https://tympanus.net/Development/categorysInspiration/ //
-// https://tympanus.net/Development/DistortedButtonEffects/ //
-// https://tympanus.net/Development/Progresscategorys/ //
-// https://tympanus.net/Development/categorysInspiration/
+// https://tympanus.net/Development/CreativeButtons/ // //
+https://tympanus.net/Development/categorysInspiration/ // //
+https://tympanus.net/Development/DistortedButtonEffects/ // //
+https://tympanus.net/Development/Progresscategorys/ // //
+https://tympanus.net/Development/categorysInspiration/
 <template>
   <button
     :class="[
       'vueButton',
-      ['fullWidth', 'border-fwidth'].indexOf(category)!=-1 ? 'fullWidth' : null,
+      ['fullWidth', 'border-fwidth'].indexOf(category) != -1
+        ? 'fullWidth'
+        : null,
       buttonClass
     ]"
     :type="type"
@@ -18,7 +20,7 @@
     @click.stop.prevent="ctx"
   >
     <span v-if="icon" :class="icon" />
-    <template v-if="!['icon', 'icon-sm', 'icon-lg'].indexOf(category)!=-1">
+    <template v-if="!['icon', 'icon-sm', 'icon-lg'].indexOf(category) != -1">
       {{ text }}
     </template>
   </button>

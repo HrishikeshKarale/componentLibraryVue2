@@ -81,14 +81,11 @@ export default {
       )[0];
       this.tag = Array.from(document.getElementsByTagName("section"));
       this.tag = this.tag.filter(tag => tag.id != "");
-      const headerOffset= offsetHeader? offsetHeader.offsetHeight: 0
+      const headerOffset = offsetHeader ? offsetHeader.offsetHeight : 0;
       this.tagOffset = this.tag.map(section => {
         return {
           top: section.offsetTop - headerOffset,
-          bottom:
-            section.offsetTop +
-            section.offsetHeight -
-            headerOffset,
+          bottom: section.offsetTop + section.offsetHeight - headerOffset,
           id: section.getAttribute("id"),
           selected: false
         };

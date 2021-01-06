@@ -17,7 +17,7 @@
           :key="index + '-' + navigation.name"
         >
           <router-link :to="{ name: navigation.component }">
-            <template v-if= "navigation.id === 0">
+            <template v-if="navigation.id === 0">
               <vue-img :src="logoLink" alt="Logo" />
               <h3>
                 Design Guide
@@ -33,7 +33,13 @@
             </template>
           </router-link>
           <!-- level 2 -->
-          <ul class="subNav" v-show="navigation.subNav && $route.path.indexOf(navigation.component)!=-1">
+          <ul
+            class="subNav"
+            v-show="
+              navigation.subNav &&
+                $route.path.indexOf(navigation.component) != -1
+            "
+          >
             <li
               v-for="(nav2, index) in navigation.subNav"
               :key="index + '-' + nav2.name"
@@ -43,7 +49,10 @@
                 <h4>{{ nav2.name }}</h4>
               </router-link>
               <!-- level 3 -->
-              <ul class="subNav2" v-if="nav2.subNav && $route.path.indexOf(nav2.component)!=-1">
+              <ul
+                class="subNav2"
+                v-if="nav2.subNav && $route.path.indexOf(nav2.component) != -1"
+              >
                 <li
                   v-for="(nav3, index) in nav2.subNav"
                   :key="index + '-' + nav3.name"
@@ -52,7 +61,7 @@
                     <span :class="nav3.icon" />
                     <h5>{{ nav3.name }}</h5>
                   </router-link>
-              </li>
+                </li>
               </ul>
             </li>
           </ul>
@@ -228,22 +237,21 @@ header {
               padding: @spaceMd @spaceSm;
 
               // level 1  level 2 level 3
-                & > span {
-                  align-self: center;
-                  font-size: @fontSizeSm * 2;
-                  .navSubText();
-                }
-                & > div > h4,
-                & > h4,
-                & > h5 {
-                  display: none;
-                }
-
+              & > span {
+                align-self: center;
+                font-size: @fontSizeSm * 2;
+                .navSubText();
+              }
+              & > div > h4,
+              & > h4,
+              & > h5 {
+                display: none;
+              }
 
               //level 2 and level 3 only
               & + .subNav,
               & + .subNav > li > .subNav2 {
-                margin-bottom:@spaceMd;
+                margin-bottom: @spaceMd;
                 & > li {
                   display: flex;
                   flex-direction: column;
@@ -269,7 +277,7 @@ header {
                 & > span,
                 & > div > h4,
                 & > h4,
-                & > h5  {
+                & > h5 {
                   color: @selected;
                 }
                 & > span {
@@ -279,7 +287,7 @@ header {
                   & > span,
                   & > div > h4,
                   & > h4,
-                  & > h5  {
+                  & > h5 {
                     color: @selected;
                   }
                   & > span {
@@ -355,7 +363,7 @@ header {
                 }
                 & > div > h4,
                 & > h4,
-                & > h5  {
+                & > h5 {
                   margin: 0;
                   display: flex;
                   .navSubText();

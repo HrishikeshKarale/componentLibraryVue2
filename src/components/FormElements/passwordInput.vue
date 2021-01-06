@@ -9,8 +9,8 @@
       </label>
       <div
         :class="{
-          warningContainer: alert? alert.warning: false,
-          errorContainer: alert? alert.error: false,
+          warningContainer: alert ? alert.warning : false,
+          errorContainer: alert ? alert.error : false,
           iconPadding: icon,
           maskField: mask
         }"
@@ -49,9 +49,7 @@
           <div>
             <span
               :class="
-                d_value.match(/\S{1,}/g)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
+                d_value.match(/\S{1,}/g) ? 'fas fa-check' : 'fas fa-times'
               "
             />
             No Spaces
@@ -59,9 +57,7 @@
           <div>
             <span
               :class="
-                d_value.match(/(?=.*[A-Z])/g)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
+                d_value.match(/(?=.*[A-Z])/g) ? 'fas fa-check' : 'fas fa-times'
               "
             />
             Capital Letter
@@ -69,18 +65,14 @@
           <div>
             <span
               :class="
-                d_value.match(/(?=.*[a-z])/g)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
+                d_value.match(/(?=.*[a-z])/g) ? 'fas fa-check' : 'fas fa-times'
               "
             />
             Snall letters
           </div>
           <div>
             <span
-              :class="
-                d_value.length > 7 ? 'fas fa-check' : 'fas fa-times'
-              "
+              :class="d_value.length > 7 ? 'fas fa-check' : 'fas fa-times'"
             />
             More than 8 characters
           </div>
@@ -97,11 +89,9 @@
         </div>
       </div>
       <input-response
-        :warning="alert? alert.warning: false"
-        :error="alert? alert.error: false"
-        :char-limit-reached="
-          d_value ? maxlength - d_value.length < 0 : false
-        "
+        :warning="alert ? alert.warning : false"
+        :error="alert ? alert.error : false"
+        :char-limit-reached="d_value ? maxlength - d_value.length < 0 : false"
         :maxlength="maxlength"
       />
     </div>
@@ -170,9 +160,7 @@
               : null
             : null
         "
-        :error="
-          d_value ? (dPasswordMatch ? null : 'Required Field') : null
-        "
+        :error="d_value ? (dPasswordMatch ? null : 'Required Field') : null"
       />
     </div>
   </div>
@@ -218,7 +206,8 @@ export default {
     pattern: {
       required: false,
       type: [RegExp, String, null],
-      default: () => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/
+      default: () =>
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/
     },
 
     //sets the placeholder attribute for the input field
@@ -239,11 +228,11 @@ export default {
     alert: {
       required: false,
       type: Object,
-      default:  () => {
-          return {
-              error: "",
-              warning: ""
-          }
+      default: () => {
+        return {
+          error: "",
+          warning: ""
+        };
       }
     },
 

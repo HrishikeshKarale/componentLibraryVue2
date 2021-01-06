@@ -42,12 +42,12 @@ export default {
     alert: {
       required: true,
       type: Object,
-        default: () => {
-          return {
-            error: "",
-            warning
-          }
-        }
+      default: () => {
+        return {
+          error: "",
+          warning
+        };
+      }
     },
     ctx: {
       required: true,
@@ -72,31 +72,31 @@ export default {
 
   computed: {
     validInput: function() {
-        if(this.validate) {
-            const alerts = this.alerts;
-            const form = this.$refs[this.form];
-            if (form && !alerts["error"] && !alerts["warning"]) {
-            const inputs = [
-                ...Array.from(form.getElementsByTagName("select")),
-                ...Array.from(form.getElementsByTagName("input"))
-            ];
+      if (this.validate) {
+        const alerts = this.alerts;
+        const form = this.$refs[this.form];
+        if (form && !alerts["error"] && !alerts["warning"]) {
+          const inputs = [
+            ...Array.from(form.getElementsByTagName("select")),
+            ...Array.from(form.getElementsByTagName("input"))
+          ];
 
-            for (let index = 0; index < inputs.length; ++index) {
-                if (inputs[index].required && !inputs[index].value) {
-                return false;
-                }
-                //skipPAsswordMatch value check
-                if (inputs[index].type === "password") {
-                index++;
-                }
+          for (let index = 0; index < inputs.length; ++index) {
+            if (inputs[index].required && !inputs[index].value) {
+              return false;
             }
-            return true;
+            //skipPAsswordMatch value check
+            if (inputs[index].type === "password") {
+              index++;
             }
-            return false;
+          }
+          return true;
         }
-        return true;
+        return false;
+      }
+      return true;
     } //validInput
-  }, //computed
+  } //computed
 }; //default
 </script>
 

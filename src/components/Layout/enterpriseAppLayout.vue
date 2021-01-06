@@ -16,7 +16,7 @@
         @afterEnter="afterEnter"
       >
         <div :key="$route.path" class="content">
-          <breadcrums :navigation="navigation"/>
+          <breadcrums :navigation="navigation" />
           <scroll-indicator>
             <router-view :key="$route.path" />
           </scroll-indicator>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { nav } from "@/store/navigation"
+import { nav } from "@/store/navigation";
 import scrollIndicator from "@/components/UIComponents/Navigation/scrollIndicator.vue";
 import breadcrums from "@/components/UIComponents/Navigation/breadcrums";
 import vueImg from "../UIComponents/Image/vueImg.vue";
@@ -57,7 +57,7 @@ export default {
     vueImg
   },
 
-  mixins: [/*authentication, */cookie],
+  mixins: [/*authentication, */ cookie],
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");

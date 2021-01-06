@@ -21,7 +21,7 @@
       <span v-else> - Optional field<abbr>*</abbr></span>
       <input :name="name" type="hidden" :value="value" :required="required" />
       <vue-button
-        v-if="options && typeof value!= 'boolean'? value: false"
+        v-if="options && typeof value != 'boolean' ? value : false"
         id="clearSelection"
         tag="resetValue"
         text="Reset"
@@ -34,8 +34,8 @@
       v-if="options"
       :class="{
         box: box,
-        warningContainer: alert? alert.warning: false,
-        errorContainer: alert? alert.error: false,
+        warningContainer: alert ? alert.warning : false,
+        errorContainer: alert ? alert.error : false,
         maskField: mask,
         inline: inline
       }"
@@ -45,7 +45,7 @@
           v-for="(option, index) in options"
           :key="index"
           :class="{
-            errorLabel: alert? alert.error: false,
+            errorLabel: alert ? alert.error : false,
             checked: isChecked(option)
           }"
           :style="{
@@ -66,7 +66,7 @@
         </label>
       </template>
     </div>
-    <input-response :error="alert? alert.error: false" />
+    <input-response :error="alert ? alert.error : false" />
   </div>
 </template>
 
@@ -150,11 +150,11 @@ export default {
     alert: {
       required: false,
       type: Object,
-      default:  () => {
-          return {
-              error: "",
-              warning: ""
-          }
+      default: () => {
+        return {
+          error: "",
+          warning: ""
+        };
       }
     },
 
@@ -202,15 +202,14 @@ export default {
   }, //props
 
   created() {
-    this.d_needsValidation= false;
+    this.d_needsValidation = false;
   }, //created
 
   methods: {
-
-    isChecked: function (option) {
+    isChecked: function(option) {
       const value = this.value;
-      if(this.type != 'radio') {
-        return (typeof value == 'object')? value.indexOf(option)!=-1: value;
+      if (this.type != "radio") {
+        return typeof value == "object" ? value.indexOf(option) != -1 : value;
       }
       return value == option;
     }, //isChecked

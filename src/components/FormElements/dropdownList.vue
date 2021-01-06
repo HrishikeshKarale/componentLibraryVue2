@@ -7,8 +7,8 @@
     </label>
     <div
       :class="{
-        warningContainer: alert? alert.warning: false,
-        errorContainer: alert? alert.error: false,
+        warningContainer: alert ? alert.warning : false,
+        errorContainer: alert ? alert.error : false,
         iconPadding: icon,
         maskField: mask
       }"
@@ -39,7 +39,7 @@
         </option>
       </select>
     </div>
-    <input-response :error="alert? alert.error: false" />
+    <input-response :error="alert ? alert.error : false" />
   </div>
 </template>
 
@@ -108,11 +108,11 @@ export default {
     alert: {
       required: false,
       type: Object,
-      default:  () => {
-          return {
-              error: "",
-              warning: ""
-          }
+      default: () => {
+        return {
+          error: "",
+          warning: ""
+        };
       }
     },
 
@@ -175,7 +175,6 @@ export default {
   }, //props
 
   created() {
-
     this.d_needsValidation = false;
     //store value of prop in temp variable for code readability
     const val = this.value;
@@ -185,7 +184,7 @@ export default {
     //if val is a singlevalue, check if it is na acceptable input
     if (!multiple && (typeof val == "string" || typeof val == "number")) {
       //if value is an acceptable input store it in d_value for future manipulation
-      if (options && options.indexOf(val)!=-1) {
+      if (options && options.indexOf(val) != -1) {
         this.d_value = val;
       }
       //if not trigger alert and set error message
@@ -204,7 +203,7 @@ export default {
       //loop through each value to check for validity of input value
       for (const v in val) {
         //if value is an acceptable input store it intempVal for future manipulation
-        if (options && options.indexOf(v)!=-1) {
+        if (options && options.indexOf(v) != -1) {
           tempVal.push(v);
         }
         //if not save it in a temp errorval variable for further use to trigger alert

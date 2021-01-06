@@ -7,8 +7,8 @@
     </label>
     <div
       :class="{
-        warningContainer: alert? alert.warning: false,
-        errorContainer: alert? alert.error: false,
+        warningContainer: alert ? alert.warning : false,
+        errorContainer: alert ? alert.error : false,
         iconPadding: icon,
         maskField: mask
       }"
@@ -67,11 +67,9 @@
       </div>
     </div>
     <input-response
-      :warning="alert? alert.warning: false"
-      :error="alert? alert.error: false"
-      :char-limit-reached="
-        d_value ? maxlength - d_value.length < 0 : false
-      "
+      :warning="alert ? alert.warning : false"
+      :error="alert ? alert.error : false"
+      :char-limit-reached="d_value ? maxlength - d_value.length < 0 : false"
       :maxlength="maxlength"
     />
   </div>
@@ -147,11 +145,11 @@ export default {
     alert: {
       required: false,
       type: Object,
-      default:  () => {
-          return {
-              error: "",
-              warning: ""
-          }
+      default: () => {
+        return {
+          error: "",
+          warning: ""
+        };
       }
     },
 
@@ -211,7 +209,7 @@ export default {
       type: String,
       default: ""
     }
-  }, //props
+  } //props
 }; //default
 </script>
 

@@ -1,20 +1,19 @@
 export const validator = {
-
   data() {
     //stores errors thrown by the input fields
-    const d_danger = "";
+    const dDanger = "";
     //stores errors thrown by the input fields
-    const d_warning = "";
+    const dWarning = "";
     //stores textbox values
-    const d_value = null;
+    const dValue = null;
     //flag used to trigger validator()
-    const d_needsValidation = true;
+    const dNeedsValidation = true;
     return {
-      d_danger,
-      d_warning,
-      d_value,
-      d_needsValidation
-    }
+      dDanger,
+      dWarning,
+      dValue,
+      dNeedsValidation
+    };
   }, //data
 
   methods: {
@@ -22,14 +21,14 @@ export const validator = {
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
       const object = {
-        value: this.d_value,
+        value: this.dValue,
         maxlength: this.maxLength,
         minlength: this.minLength,
         pattern: this.pattern
       };
       const response = this.validator(object);
-      this.d_danger = response.error;
-      this.d_warning = response.warning;
+      this.dDanger = response.error;
+      this.dWarning = response.warning;
     }, //validate
 
     validator: function(object) {
@@ -40,11 +39,11 @@ export const validator = {
           object.pattern &&
           this.followsPattern(object.pattern, object.value)
         ) {
-          this.d_warning = "Wrong format: Please follow the pattern.";
+          this.dWarning = "Wrong format: Please follow the pattern.";
         } else if (object.minlength) {
-          this.d_warning = this.isTooShort(object.minlength, object.value);
+          this.dWarning = this.isTooShort(object.minlength, object.value);
         } else if (object.maxlength) {
-          this.d_warning = this.isTooLong(object.maxlength, object.value);
+          this.dWarning = this.isTooLong(object.maxlength, object.value);
         } else {
           //emit/send new values to parent component v-model attribute
           this.$emit("value", object.value);
@@ -52,10 +51,10 @@ export const validator = {
       }
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
       else {
-        this.d_danger = this.isRequired();
+        this.dDanger = this.isRequired();
       }
 
-      return { warning: this.d_warning, error: this.d_danger };
+      return { warning: this.dWarning, error: this.dDanger };
     }, //validator
 
     //value ebsent
@@ -89,12 +88,11 @@ export const validator = {
     }, //isTooLong
 
     //pattern matching
-    followsPattern: function (pattern, value) {
+    followsPattern: function(pattern, value) {
       //if not regexp, convert to regexp
       if (!pattern.test(value)) {
         return "Wrong email format: Please follow the pattern " + pattern;
-      }
-      else "";
+      } else "";
     } //followsPattern
   },
 
@@ -103,20 +101,20 @@ export const validator = {
     //load alerts sent via component
     if (alert) {
       if (alert["error"]) {
-        this.d_danger = alert["error"];
+        this.dDanger = alert["error"];
       } else if (alert["warning"]) {
-        this.d_warning = alert["warning"];
+        this.dWarning = alert["warning"];
       } else if (alert["success"]) {
-        this.d_success = alert["success"];
+        this.dSuccess = alert["success"];
       } else if (alert["info"]) {
-        this.d_info = alert["info"];
+        this.dInfo = alert["info"];
       }
     }
-    //store values passed as props into d_value for future manipulation
+    //store values passed as props into dValue for future manipulation
     if (this.value) {
-      this.d_value = this.value;
+      this.dValue = this.value;
 
-      if(this.d_needsValidation) {
+      if (this.dNeedsValidation) {
         this.validate();
       }
     }
@@ -124,13 +122,13 @@ export const validator = {
 
   watch: {
     //send warning messages back to parent component
-    d_warning: function(newValue) {
+    dWarning: function(newValue) {
       this.$emit("notify", "warning", newValue);
     },
 
     //send error messages back to parent component
-    d_danger: function(newValue) {
+    dDanger: function(newValue) {
       this.$emit("notify", "error", newValue);
     }
-  }, //methods
+  } //methods
 };
